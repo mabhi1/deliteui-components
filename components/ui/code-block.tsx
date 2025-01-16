@@ -56,7 +56,7 @@ export const CodeBlock = ({ language, filename, code, highlightLines = [], tabs 
     >
       <div
         className={cn(
-          "absolute top-12 left-0 w-full h-full bg-muted/80 items-center justify-center",
+          "absolute top-12 left-0 w-full h-full bg-gradient-to-b from-transparent via-muted/90 to-muted items-center justify-center",
           codeType === "expanded" ? "hidden" : "flex"
         )}
       >
@@ -64,11 +64,13 @@ export const CodeBlock = ({ language, filename, code, highlightLines = [], tabs 
       </div>
       <div
         className={cn(
-          "absolute bottom-0 left-0 w-full p-1 bg-muted/80 items-center justify-center",
+          "absolute bottom-5 right-5 items-center justify-center",
           codeType === "collapsed" ? "hidden" : "flex"
         )}
       >
-        <Button onClick={() => setCodeType("collapsed")}>Collapse</Button>
+        <Button variant="secondary" onClick={() => setCodeType("collapsed")}>
+          Collapse
+        </Button>
       </div>
       <div className="flex flex-col gap-2">
         {tabsExist && (
@@ -113,6 +115,7 @@ export const CodeBlock = ({ language, filename, code, highlightLines = [], tabs 
           margin: 0,
           padding: 0,
           background: "transparent",
+          scrollbarWidth: "none",
           fontSize: "0.875rem", // text-sm equivalent
         }}
         wrapLines={true}

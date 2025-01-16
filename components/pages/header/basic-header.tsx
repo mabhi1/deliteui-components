@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import logo from "@/public/logo.png";
-import logoDark from "@/public/logo-dark.png";
 import CodeContainer from "@/components/layout/code-container";
 
 const mobilePreview = (
@@ -78,8 +77,7 @@ const mobilePreview = (
         </SheetContent>
       </Sheet>
       <div className="flex items-center gap-2 mr-auto">
-        <Image src={logo} alt="Delite UI" width={28} height={28} priority className="dark:hidden" />
-        <Image src={logoDark} alt="Delite UI" width={28} height={28} priority className="hidden dark:block" />
+        <Image src={logo} alt="Delite UI" width={28} height={28} priority />
         <span className="text-lg font-medium">Delite UI</span>
       </div>
     </div>
@@ -91,8 +89,7 @@ const desktopPreview = (
     <header className="hidden md:block border-b p-3 text-sm bg-background">
       <div className="flex items-center gap-8 justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src={logo} alt="Delite UI" width={30} height={30} priority className="dark:hidden" />
-          <Image src={logoDark} alt="Delite UI" width={30} height={30} priority className="hidden dark:block" />
+          <Image src={logo} alt="Delite UI" width={30} height={30} priority />
           <span className="text-lg font-medium">Delite UI</span>
         </Link>
         <ul className="flex items-center gap-5">
@@ -131,10 +128,7 @@ import { ForwardRefExoticComponent, RefAttributes } from "react";
 interface HeaderProps {
   title: string;
   mobileFooter: string;
-  logo: {
-    light: StaticImageData;
-    dark: StaticImageData;
-  };
+  logo: StaticImageData;
   rootPath: string;
   mobileMenu?: {
     title: string;
@@ -155,8 +149,7 @@ function Header({ mobileMenu, mainMenu, rootPath, logo, title, mobileFooter }: H
     <header className="border-b bg-background w-full">
       <div className="hidden md:flex items-center gap-8 justify-between p-3">
         <Link href={rootPath} className="flex items-center gap-2">
-          <Image src={logo.light} alt={title} width={30} height={30} priority className="dark:hidden" />
-          <Image src={logo.dark} alt={title} width={30} height={30} priority className="hidden dark:block" />
+          <Image src={logo} alt={title} width={30} height={30} priority />
           <span className="text-lg font-medium">{title}</span>
         </Link>
         <ul className="flex items-center gap-5">
@@ -229,8 +222,7 @@ function Header({ mobileMenu, mainMenu, rootPath, logo, title, mobileFooter }: H
           </SheetContent>
         </Sheet>
         <div className="flex items-center gap-2 mr-auto">
-          <Image src={logo.light} alt={title} width={28} height={28} priority className="dark:hidden" />
-          <Image src={logo.dark} alt={title} width={28} height={28} priority className="hidden dark:block" />
+          <Image src={logo} alt={title} width={28} height={28} priority />
           <span className="text-lg font-medium">{title}</span>
         </div>
       </div>
@@ -242,7 +234,6 @@ export default Header;
 
 const componentCode = `import Header from "./header";
 import logo from "@/public/logo.png";
-import logoDark from "@/public/logo-dark.png";
 
 import { Component, FolderGit2 } from "lucide-react";
 
@@ -294,7 +285,7 @@ function Layout() {
       title="Delite UI"
       rootPath="/"
       mobileFooter="Code available on github."
-      logo={{ dark: logoDark, light: logo }}
+      logo={logo}
       mainMenu={mainMenu}
       mobileMenu={mobileMenu}
     />
