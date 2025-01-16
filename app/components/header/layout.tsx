@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
-      <PageSideMenu examples={headerExamples} />
+      <PageSideMenu examples={headerExamples} component="header" />
     </>
   );
 }

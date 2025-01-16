@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased text-sm flex flex-col min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Header />
-          <main className="flex-1 w-full max-w-7xl mx-auto p-3 lg:pl-3">{children}</main>
+          <main className="flex-1 w-full max-w-[85rem] mx-auto p-3">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

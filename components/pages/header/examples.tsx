@@ -1,11 +1,15 @@
 const headerExamples = [
   {
-    name: "Basic Header",
-    id: "basicHeader",
+    name: "Basic header",
+    id: "basic-header",
   },
   {
-    name: "Sticky with Search",
-    id: "stickyWithSearch",
+    name: "Basic with theme",
+    id: "basic-with-theme",
+  },
+  {
+    name: "Sticky with search",
+    id: "sticky-with-search",
   },
 ];
 

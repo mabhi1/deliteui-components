@@ -3,6 +3,7 @@ import Image from "next/image";
 import { mainMenu, pageMenu } from "@/lib/menus";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import PreviewContainer from "@/components/layout/preview-container";
 import {
   Sheet,
@@ -82,6 +83,7 @@ const mobilePreview = (
         <Image src={logoDark} alt="Delite UI" width={28} height={28} priority className="hidden dark:block" />
         <span className="text-lg font-medium">Delite UI</span>
       </div>
+      <ModeToggle />
     </div>
   </header>
 );
@@ -89,13 +91,13 @@ const mobilePreview = (
 const desktopPreview = (
   <>
     <header className="hidden md:block border-b p-3 text-sm bg-background">
-      <div className="flex items-center gap-8 justify-between">
+      <div className="flex items-center gap-8 max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-2">
           <Image src={logo} alt="Delite UI" width={30} height={30} priority className="dark:hidden" />
           <Image src={logoDark} alt="Delite UI" width={30} height={30} priority className="hidden dark:block" />
           <span className="text-lg font-medium">Delite UI</span>
         </Link>
-        <ul className="flex items-center gap-5">
+        <ul className="flex items-center gap-5 mr-auto">
           {mainMenu.map((item) => (
             <li key={item.title}>
               <Link href={item.href} className="flex gap-1 items-center text-foreground/75 hover:text-foreground">
@@ -105,6 +107,7 @@ const desktopPreview = (
             </li>
           ))}
         </ul>
+        <ModeToggle />
       </div>
     </header>
     <div className="p-3 md:hidden">Open this page on desktop for the preview</div>
@@ -115,6 +118,7 @@ const sourceCode = `import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
 import { LucideProps, Menu } from "lucide-react";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import {
   Sheet,
   SheetClose,
@@ -153,13 +157,13 @@ interface HeaderProps {
 function Header({ mobileMenu, mainMenu, rootPath, logo, title, mobileFooter }: HeaderProps) {
   return (
     <header className="border-b bg-background w-full">
-      <div className="hidden md:flex items-center gap-8 justify-between p-3">
+      <div className="hidden md:flex items-center gap-8 max-w-7xl mx-auto p-3">
         <Link href={rootPath} className="flex items-center gap-2">
           <Image src={logo.light} alt={title} width={30} height={30} priority className="dark:hidden" />
           <Image src={logo.dark} alt={title} width={30} height={30} priority className="hidden dark:block" />
           <span className="text-lg font-medium">{title}</span>
         </Link>
-        <ul className="flex items-center gap-5">
+        <ul className="flex items-center gap-5 mr-auto">
           {mainMenu.map((item) => (
             <li key={item.title}>
               <Link href={item.href} className="flex gap-1 items-center text-foreground/75 hover:text-foreground">
@@ -169,6 +173,7 @@ function Header({ mobileMenu, mainMenu, rootPath, logo, title, mobileFooter }: H
             </li>
           ))}
         </ul>
+        <ModeToggle />
       </div>
       <div className="flex md:hidden items-center gap-3 p-3">
         <Sheet>
@@ -233,6 +238,7 @@ function Header({ mobileMenu, mainMenu, rootPath, logo, title, mobileFooter }: H
           <Image src={logo.dark} alt={title} width={28} height={28} priority className="hidden dark:block" />
           <span className="text-lg font-medium">{title}</span>
         </div>
+        <ModeToggle />
       </div>
     </header>
   );
@@ -305,6 +311,10 @@ export default Layout;
 
 const dependencies = [
   {
+    title: "Install next-themes and add a mode toggle",
+    link: "https://ui.shadcn.com/docs/dark-mode/next",
+  },
+  {
     title: "Install Button",
     link: "https://ui.shadcn.com/docs/components/button",
   },
@@ -318,16 +328,16 @@ const dependencies = [
   },
 ];
 
-interface BasicHeaderProps {
+interface BasicWithThemeProps {
   previewOnly?: boolean;
 }
 
-function BasicHeader({ previewOnly = false }: BasicHeaderProps) {
+const BasicWithTheme = ({ previewOnly = false }: BasicWithThemeProps) => {
   return (
     <div className="space-y-8">
       <PreviewContainer
-        title={previewOnly ? "Basic header" : undefined}
-        href="/components/header/basic-header"
+        title={previewOnly ? "Basic header with a theme toggle button" : undefined}
+        href="/components/header/basic-with-theme"
         desktopPreview={desktopPreview}
         mobilePreview={mobilePreview}
         tabletPreview={desktopPreview}
@@ -341,5 +351,5 @@ function BasicHeader({ previewOnly = false }: BasicHeaderProps) {
       )}
     </div>
   );
-}
-export default BasicHeader;
+};
+export default BasicWithTheme;

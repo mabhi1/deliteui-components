@@ -2,48 +2,28 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type PageSideMenuProps = {
   examples?: {
     name: string;
     id: string;
   }[];
+  component: string;
 };
 
-function PageSideMenu({ examples }: PageSideMenuProps) {
-  const [activeId, setActiveId] = useState("about");
-
-  const handleScroll = () => {
-    if (!examples) return;
-    const sections = ["about", ...examples.map((item) => item.id)];
-    let currentId = "";
-    for (const section of sections) {
-      const element = document.getElementById(section);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        console.log(section, rect.top, rect.bottom, window.innerHeight / 2);
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-          currentId = section;
-          break;
-        }
-      }
-    }
-
-    setActiveId(currentId);
-  };
-
-  useEffect(() => {
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+function PageSideMenu({ examples, component }: PageSideMenuProps) {
+  const pathname = usePathname().split("/");
+  const activeId = pathname[pathname.length - 1];
 
   return (
     <div className="hidden lg:flex flex-col gap-3 min-w-52 sticky top-20 h-fit">
-      <div className="font-medium">On this page</div>
+      <div className="font-medium capitalize">{`${component} component`}</div>
       <div className="text-muted-foreground flex flex-col gap-3">
-        <Link href="#about" className={cn("hover:text-primary font-medium", activeId === "about" && "text-primary")}>
+        <Link
+          href={`/components/${component}`}
+          className={cn("hover:text-primary font-medium", activeId === component && "text-primary")}
+        >
           About
         </Link>
         {examples && (
@@ -54,11 +34,11 @@ function PageSideMenu({ examples }: PageSideMenuProps) {
                 <li
                   key={item.name}
                   className={cn(
-                    "capitalize hover:text-primary hover:border-primary border-l-2 pl-4 font-medium",
+                    "hover:text-primary hover:border-primary border-l-2 pl-4 font-medium",
                     activeId === item.id && "text-primary border-primary"
                   )}
                 >
-                  <Link href={`#${item.id}`}>{item.name}</Link>
+                  <Link href={`/components/${component}/${item.id}`}>{item.name}</Link>
                 </li>
               ))}
             </ul>

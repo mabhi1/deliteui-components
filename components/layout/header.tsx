@@ -20,8 +20,8 @@ import logoDark from "@/public/logo-dark.png";
 
 function Header() {
   return (
-    <header className="sticky top-0 backdrop-blur-md bg-background/50 border-b p-3 text-sm">
-      <div className="hidden md:flex items-center gap-8 max-w-7xl mx-auto">
+    <header className="sticky top-0 backdrop-blur-md bg-background/50 border-b text-sm">
+      <div className="hidden md:flex items-center gap-8 max-w-[85rem] mx-auto p-3">
         <Link href="/" className="flex items-center gap-2">
           <Image src={logo} alt="Delite UI" width={30} height={30} priority className="dark:hidden" />
           <Image src={logoDark} alt="Delite UI" width={30} height={30} priority className="hidden dark:block" />
@@ -45,7 +45,7 @@ function Header() {
           <ModeToggle />
         </div>
       </div>
-      <div className="flex md:hidden items-center gap-3">
+      <div className="flex md:hidden items-center gap-3 p-3">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon">

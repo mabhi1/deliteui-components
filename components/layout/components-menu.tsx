@@ -9,7 +9,7 @@ function ComponentsMenu() {
   const pathname = usePathname();
 
   return (
-    <div className="hidden md:flex w-44 flex-col gap-5 sticky top-20 h-fit">
+    <div className="hidden md:flex w-48 flex-col gap-5 sticky top-20 h-fit">
       {pageMenu.map((menu) => (
         <div className="flex flex-col" key={menu.title}>
           <div className="font-medium p-2">{menu.title}</div>
