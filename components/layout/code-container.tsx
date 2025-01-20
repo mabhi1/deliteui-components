@@ -8,7 +8,7 @@ interface CodeContainerProps {
     path: string;
     filename: string;
     code: string;
-  };
+  }[];
   component: {
     filename: string;
     code: string;
@@ -40,8 +40,12 @@ function CodeContainer({ source, component, dependencies }: CodeContainerProps) 
       <div className="flex flex-col gap-3">
         <div className="text-lg font-medium">Usage</div>
         <div>Copy the source code</div>
-        <div className="italic bg-muted p-2 px-3 rounded">{source.path}</div>
-        <CodeBlock language="tsx" filename={source.filename} code={source.code} />
+        {source.map((item) => (
+          <div key={item.filename} className="flex flex-col gap-2">
+            <div className="italic bg-muted p-2 px-3 rounded">{item.path}</div>
+            <CodeBlock language="tsx" filename={item.filename} code={item.code} />
+          </div>
+        ))}
         <div className="mt-5">Import it in your component</div>
         <CodeBlock language="tsx" filename={component.filename} code={component.code} />
       </div>

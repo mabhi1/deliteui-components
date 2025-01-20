@@ -344,7 +344,7 @@ const BasicWithTheme = ({ previewOnly = false }: BasicWithThemeProps) => {
       />
       {!previewOnly && (
         <CodeContainer
-          source={{ code: sourceCode, path: "/components/ui/header.tsx", filename: "header.tsx" }}
+          source={[{ code: sourceCode, path: "/components/ui/header.tsx", filename: "header.tsx" }]}
           component={{ code: componentCode, filename: "layout.tsx" }}
           dependencies={dependencies}
         />

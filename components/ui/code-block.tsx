@@ -56,7 +56,7 @@ export const CodeBlock = ({ language, filename, code, highlightLines = [], tabs 
     >
       <div
         className={cn(
-          "absolute top-12 left-0 w-full h-full bg-gradient-to-b from-transparent via-muted/90 to-muted items-center justify-center",
+          "absolute top-12 left-0 w-full h-48 bg-gradient-to-b from-transparent via-black/80 to-black items-end justify-center pb-5",
           codeType === "expanded" ? "hidden" : "flex"
         )}
       >
@@ -64,7 +64,7 @@ export const CodeBlock = ({ language, filename, code, highlightLines = [], tabs 
       </div>
       <div
         className={cn(
-          "absolute bottom-5 right-5 items-center justify-center",
+          "absolute bottom-0 left-0 w-full h-48 bg-transparent items-end justify-center pb-5",
           codeType === "collapsed" ? "hidden" : "flex"
         )}
       >
@@ -114,6 +114,7 @@ export const CodeBlock = ({ language, filename, code, highlightLines = [], tabs 
         customStyle={{
           margin: 0,
           padding: 0,
+          paddingBottom: "4rem",
           background: "transparent",
           scrollbarWidth: "none",
           fontSize: "0.875rem", // text-sm equivalent

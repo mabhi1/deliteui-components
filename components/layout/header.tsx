@@ -20,7 +20,7 @@ import logoDark from "@/public/logo-dark.png";
 
 function Header() {
   return (
-    <header className="sticky top-0 backdrop-blur-md bg-background/50 border-b text-sm">
+    <header className="sticky top-0 backdrop-blur-md bg-background/50 border-b text-sm z-50">
       <div className="hidden md:flex items-center gap-8 max-w-[85rem] mx-auto p-3">
         <Link href="/" className="flex items-center gap-2">
           <Image src={logo} alt="Delite UI" width={30} height={30} priority className="dark:hidden" />

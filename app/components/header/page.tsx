@@ -1,5 +1,6 @@
 import BasicHeader from "@/components/pages/header/basic-header";
 import BasicWithThemeHeader from "@/components/pages/header/basic-with-theme";
+import NavigationHeader from "@/components/pages/header/navigation-header";
 
 function HeaderPage() {
   return (
@@ -10,6 +11,7 @@ function HeaderPage() {
       </div>
       <BasicHeader previewOnly />
       <BasicWithThemeHeader previewOnly />
+      <NavigationHeader previewOnly />
     </div>
   );
 }

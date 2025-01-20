@@ -8,8 +8,8 @@ const headerExamples = [
     id: "basic-with-theme",
   },
   {
-    name: "Sticky with search",
-    id: "sticky-with-search",
+    name: "Navigation header",
+    id: "navigation-header",
   },
 ];
 
