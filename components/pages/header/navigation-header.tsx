@@ -247,12 +247,12 @@ const componentCode = `"use client";
 import * as React from "react";
 import Link from "next/link";
 
-import logo from "@/public/store.png";
+import logo from "@/public/logo.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Component, File, Home, Search } from "lucide-react";
-import { DesktopMenu } from "./desktop-menu";
-import MobileMenu from "./mobile-menu";
+import { DesktopMenu } from "@/components/layout/desktop-menu";
+import MobileMenu from "@/components/layout/mobile-menu";
 
 const navigation = [
   {
@@ -323,7 +323,7 @@ const navigation = [
 
 export function Header() {
   return (
-    <header className="flex gap-5 items-center sticky top-0 bg-background w-full p-4">
+    <header className="flex gap-5 items-center sticky top-0 bg-background w-full p-4 z-50">
       <MobileMenu logo={logo} navigation={navigation} />
       <Link href="/" className="flex items-center gap-3 text-primary dark:text-primary-foreground">
         <Image src={logo} alt="Delite UI" width={30} height={30} priority />
