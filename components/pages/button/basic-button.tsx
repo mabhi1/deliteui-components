@@ -1,4 +1,20 @@
-import * as React from "react";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import PreviewContainer from "@/components/layout/preview-container";
+import CodeContainer from "@/components/layout/code-container";
+import { ClipboardCheck } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useState } from "react";
+
+interface BasicButtonProps {
+  previewOnly?: boolean;
+}
+
+const basicPreview = <Button Icon={ClipboardCheck}>Click me</Button>;
+const loadingPreview = <Button loading>Please Wait</Button>;
+
+const sourceCode = `import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -62,3 +78,54 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
+`;
+
+const componentCode = `import { Button } from "@/components/ui/button";
+
+<Button Icon={ClipboardCheck}>Click me</Button>
+
+// loading button
+<Button loading>Please Wait</Button>
+`;
+
+function BasicButton({ previewOnly = false }: BasicButtonProps) {
+  const [showLoadingPreview, setShowLoadingPreview] = useState(false);
+
+  return (
+    <div className="space-y-8">
+      {!showLoadingPreview ? (
+        <PreviewContainer
+          title={previewOnly ? "Basic button" : undefined}
+          href="/components/button/basic-button"
+          desktopPreview={basicPreview}
+          mobilePreview={basicPreview}
+          tabletPreview={basicPreview}
+        />
+      ) : (
+        <PreviewContainer
+          title={previewOnly ? "Basic button" : undefined}
+          href="/components/button/basic-button"
+          desktopPreview={loadingPreview}
+          mobilePreview={loadingPreview}
+          tabletPreview={loadingPreview}
+        />
+      )}
+      <div className="flex items-center space-x-2">
+        <Checkbox id="preview" onCheckedChange={() => setShowLoadingPreview((loadingPreview) => !loadingPreview)} />
+        <label
+          htmlFor="preview"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+          Show loading preview
+        </label>
+      </div>
+      {!previewOnly && (
+        <CodeContainer
+          source={[{ code: sourceCode, path: "/components/ui/button.tsx", filename: "button.tsx" }]}
+          component={{ code: componentCode, filename: "page.tsx" }}
+        />
+      )}
+    </div>
+  );
+}
+export default BasicButton;

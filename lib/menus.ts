@@ -22,6 +22,10 @@ const pageMenu = [
     title: "Components",
     items: [
       {
+        title: "Button",
+        href: "/components/button",
+      },
+      {
         title: "Header",
         href: "/components/header",
       },

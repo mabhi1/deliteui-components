@@ -37,7 +37,7 @@ function PreviewContainer({ title, href, desktopPreview, mobilePreview, tabletPr
           </Button>
         </div>
       </div>
-      <div className="border flex-1 rounded p-5 bg-muted">
+      <div className="border flex-1 rounded p-5 bg-muted overflow-hidden">
         {device === "desktop" && desktopPreview}
         {device === "tablet" && tabletPreview}
         {device === "mobile" && mobilePreview}
